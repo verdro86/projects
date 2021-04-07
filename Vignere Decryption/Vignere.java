@@ -17,14 +17,14 @@ public class Vignere {
 
       String cipherFile = args[0];
       divideCipher(cipherFile, 3);
-
+      
       BufferedReader fl = new BufferedReader(new FileReader(cipherFile));
       StringBuilder line = new StringBuilder();
       line.append(fl.readLine());
       fl.close();
 
       // loop through the trigrams
-      BufferedReader cipherReader = new BufferedReader(new FileReader("c1freq.txt"));
+      BufferedReader cipherReader = new BufferedReader(new FileReader("divide.txt"));
       int index = 0;
       String chunk = "";
       Map<String, List<Integer>> counts = new HashMap<String, List<Integer>>();
@@ -58,23 +58,13 @@ public class Vignere {
          }
       }
 
-      // System.out.println(counts);
-      // System.out.println(keyLen);
       int len = getKeyLen(keyLen);
-      // System.out.println(len);
-      // System.out.println(line);
-
 
       divideCipher(cipherFile,len);
-      // Map<String, Double> expected = new HashMap<String,Double>();
-      // expected = getExpected(line.length());
-      // System.out.println(expected);
 
       Map<Integer, String> groups = new HashMap<Integer,String>();
       groups = getGroupByIndex(len, "divide.txt");
-      // System.out.println(groups);
-      // char s = 'a';
-      // System.out.println((char) (s+1));
+
       Map<String, Double> expected = new HashMap<String,Double>();
       StringBuilder keyword = new StringBuilder();
       DecimalFormat df = new DecimalFormat("#.0000");
@@ -84,41 +74,30 @@ public class Vignere {
          Map<String, Double> g = new HashMap<String,Double>();
 
          for (Entry<String, Double> e : expected.entrySet()){
-            // System.out.println(e.getKey().toLowerCase().charAt(0));
 
             double num = Double.parseDouble(df.format(getOcurrence(e.getKey().toLowerCase().charAt(0), groups.get(i))));
             double res = Double.parseDouble(df.format((num/groups.get(i).length())*100));
             g.put(e.getKey(),res);
-            // System.out.println(res);
          }
-         // System.out.println("Key index :" + i);
-         // System.out.println(expected);
-         // System.out.println(g);
-         // System.out.println('\n');
          keyword.append(getLetterKey(g));
-         // System.out.println(getLetterKey(g));
       }
-      // System.out.println(keyword);
       for (Entry<Integer, String> e : groups.entrySet()){
          groups.replace(e.getKey(), decrypt(keyword.charAt(e.getKey()), e.getValue()));
       }
-
-      // System.out.println(groups);
    
       String plainText = mergeGroups(groups, len);
-      // System.out.println(plainText);
 
-      PrintWriter w = new PrintWriter("keyword1.txt");
+      PrintWriter w = new PrintWriter("keyword.txt");
       w.print("");
       w.close();
-      w = new PrintWriter("message1.txt");
+      w = new PrintWriter("message.txt");
       w.print("");
       w.close();
 
-      w = new PrintWriter("keyword1.txt");
+      w = new PrintWriter("keyword.txt");
       w.print(keyword);
       w.close();
-      w = new PrintWriter("message1.txt");
+      w = new PrintWriter("message.txt");
       w.print(plainText);
       w.close();
 
@@ -144,7 +123,6 @@ public class Vignere {
    }
 
    private static String decrypt(char key, String str) {
-      // System.out.println(str);
       StringBuilder res = new StringBuilder();
       for (int i = 0; i < str.length(); i++) {
          char c = key;
@@ -152,7 +130,6 @@ public class Vignere {
          
          if (dist < 0) {
 
-            // dist = (-1) * dist;
             c = (char) (((122 - key) + (str.charAt(i) - 96)) + 97);
          } else {
             c = (char) (dist + 97);
@@ -256,6 +233,11 @@ public class Vignere {
          return expected;
       }
 
+   /**
+      Divides the ciphertext by the @param len
+      @param : String file : file name
+               int len : length of ngrams
+    */
    private static void divideCipher(String file, int len) throws IOException {
       File f = new File(file); // Creation of File Descriptor for input file
       FileReader fr = new FileReader(f); // Creation of File Reader object

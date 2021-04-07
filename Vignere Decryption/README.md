@@ -1,13 +1,11 @@
-Program used
-- ngrams.py : from the class code
+Program 
 - Vignere.java : decrypter
 
 Files used
-- c1freq.txt : result from running the ngrams.py
-- cipher1.txt : contains the cipher to be decrypted
+- cipher.txt : contains the cipher to be decrypted
 - divide.txt : contains the cipher but divide into N keyword length
 - englishfreq.txt : contains the frequency data for each alphabet in english word
-- keyword1.txt : contains the keyword
+- keyword.txt : contains the keyword
 - message1.txt : contains the plaintext
 
 command to run the program:
