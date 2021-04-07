@@ -11,7 +11,9 @@ Files used
 - message1.txt : contains the plaintext
 
 command to run the program:
+
 ./ngrams.py cipher1.txt > c1freq.txt    // generates trigrams frequency of the ciphertext
+
 java  Vignere.java cipher1.txt
 
 Explanation:
