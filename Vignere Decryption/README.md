@@ -6,7 +6,7 @@ Files used
 - divide.txt : contains the cipher but divide into N keyword length
 - englishfreq.txt : contains the frequency data for each alphabet in english word
 - keyword.txt : contains the keyword
-- message1.txt : contains the plaintext
+- message.txt : contains the plaintext
 
 command to run the program:
 ./ngrams.py cipher1.txt > c1freq.txt    // generates trigrams frequency of the ciphertext

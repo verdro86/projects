@@ -1,0 +1,58 @@
+/* place your css style definitions here 
+ Here is a link to a great reference for learning and 
+ experimenting with css:
+https://www.w3schools.com/css/default.asp
+*/
+
+canvas {
+    cursor: crosshair;
+    border: 1px solid #000000;
+    border-radius: 5mm;
+    display: block;
+    margin: 0 auto;
+}
+
+#layout {
+    text-align: center;
+}
+
+button {
+    margin-top: .5em;
+}
+
+#welcome {
+    float:center;
+}
+
+#startRecord:focus, #startRecord:hover {
+    background-color: lightcoral;
+}
+
+div > .column {   
+    float: left;
+    width: 50%;
+}
+.collapsible {
+    position: absolute;
+    left: 44%;
+    /*padding: 15px 32px;*/
+    text-align: center;
+
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+  .ins {
+    display: none;
+    overflow: hidden;
+    padding-top: 4%;
+  }
+
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }

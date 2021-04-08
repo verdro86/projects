@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>Canvas Recording Application</title>
+        <link rel="stylesheet" href="recorder.css" />
+        <script src="recorder.js"></script>
+    </head>
+
+    <body >
+
+        <div id="layout">
+
+            <div id='welcome'>
+                <h1>Welcome to Canvas!</h1>    
+            </div>
+
+        <canvas id="canvas" width="800" height="500"></canvas>
+        <br/>
+
+        <!--Clear screen-->
+        <button onclick="clearCanvas();">Clear Canvas</button>
+
+        <!--Erase-->
+        <button onclick="eraser();">Eraser</button>
+
+        <!--Color Choice-->
+        <label for="pencolor">Pen Color:</label>
+        <input type="color" id="pencolor" name="pencolor" value="#000000">
+
+        <!--Pen Width-->
+        Pen Width : <select id="penWidth">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="9" selected="selected">9</option>
+            <option value="11">11</option>
+            <option value="16">16</option>
+        </select>
+
+        <!--Canvas Resize-->
+        Canvas Size:
+        <button id="smallCanvas" onclick="smallCanvas();">Small</button>
+        <button id="smallCanvas" onclick="mediumCanvas();">Medium</button>
+        <button id="smallCanvas" onclick="largeCanvas();">Large</button>
+
+        
+
+        <br/>
+        <!--Start recording-->
+        <button id="startRecord">Start Recording</button>
+
+        <!--Stop recording-->
+        <button id="stopRecord">Stop Recording</button>
+
+        <!--Save recording-->
+        <button onclick="save();">Save Recording</button>
+
+        <!--Retrieve saved recording-->
+        <select id="recordinglist"><option value="">Saved Recordings</option></select>
+
+        <br/>
+        <!--Play-->
+        <button id='play' onclick="play();">Play</button>
+
+        <!--Pause-->
+        <button id="pause">Pause</button>
+
+        <!--Delete-->
+        <button id="delete">Delete</button>
+
+        <!--Playback Speed-->
+        Playback Speed: <input type="range" id="speed" min="0" max="100" value="50">
+
+
+        </div>
+
+        <!--Instructions with collapsible-->        
+        <button type="button" class="collapsible"><h2>Click for Instructions</h2></button>
+        <div class="ins">
+            
+        <div class="column" >
+            <h3>Drawing:</h3>
+            <ul>
+                <li>Click and drag inside the canvas to draw.</li>
+                <li>Click "Clear Canvas" to fully erase the canvas.</li>
+                <li>"Pen Color" changes the color of the pen.</li>
+                <li>Click "Eraser" to erase parts of the current drawing.</li>
+                    <ul>
+                        <li>To switch out of the eraser, select a pen color.</li>
+                    </ul> 
+                <li>"Pen Width" changes the thickness of the pen.</li>
+                <li>Adjust the size of the canvas by using the "small","medium", and "large" buttons.</li>
+            </ul>
+
+        </div>
+        <div class="column">
+            <h3>Recording and Replay:</h3>
+            <ul>
+                <li>"Start Recording" begins the recording.</li>
+                <li>"Stop Recording" ends the recording.</li>
+                <li>To play the recent recording, click "Play" after stoping a recording.</li>
+                <li>To save a recording, click "Save Recording" then the recording will be added into the "Saved Recordings" dropdown.</li>
+                <li>To replay a saved recording, choose a recording on the "Saved Recordings" dropdown then click play.</li>
+                <li>Adjust the playback speed using the slider.</li>
+                    <ul>
+                        <li>Either adjust the playback speed prior to playing the recording, or while the recording is playing.</li>
+                    </ul>
+                <li>To delete a recording, select the recording on the "Saved Recordings" dropdown then clic "Delete".</li>
+            </ul>
+        </div>
+    </div>
+
+    </body>
+</html>
